@@ -4,7 +4,7 @@ import wavesImg from '../../assets/imgs/waves.png';
 export const Light = styled.div`
     background-color: #f9f9f9;
     height: 100vh;
-`
+`;
 
 export const Blue = styled.div`
     min-height: 680px;
@@ -16,8 +16,8 @@ export const Blue = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top right;
-`
+`;
 
 export const Default = styled.div`
     background-color: 'white';
-`
+`;

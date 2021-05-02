@@ -16,16 +16,16 @@ export const CardContainer = styled.div`
     @media screen and (min-width: 1280px) {
         margin: 0px 30px;
     }
-`
+`;
 
 export const CardBody = styled.div`
     padding: 30px;
-`
+`;
 
 export const CardImg = styled.img`
     width: 100%;
     max-width: 100%;
-`
+`;
 
 export const CardTitle = styled.h4`
     text-align: center;
@@ -33,16 +33,16 @@ export const CardTitle = styled.h4`
     font-size: 22px;
     text-transform: uppercase;
     margin: 10px 5px;
-`
+`;
 
 export const CardText = styled.p`
     text-align: center;
     font-size: 16x;
     color: #999999;
     margin: 15px 5px;
-`
+`;
 
 export const CardButton = styled.div`
     margin: 30px 0;
     text-align: center;
-`
+`;

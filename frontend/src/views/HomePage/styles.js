@@ -11,7 +11,7 @@ export const BlueBackground = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top right;
-`
+`;
 
 export const Nav = styled.nav`
     display: flex;
@@ -34,13 +34,13 @@ export const Nav = styled.nav`
           padding: 0 15px;
        }
    }
-`
+`;
 
 export const Section = styled.div`
    @media screen and (min-width: 1200px) {
         padding: 40px 0;
    }
-`
+`;
 
 export const FlexRow = styled.div`
     display: flex;
@@ -49,7 +49,7 @@ export const FlexRow = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-`
+`;
 
 export const FlexItem = styled.div`
     padding: 0px 5px;
@@ -62,7 +62,7 @@ export const FlexItem = styled.div`
     @media screen and (min-width:992px) {
         width: 50%;
     }
-`
+`;
 
 export const MainImg = styled.img`
     width: 100%;
@@ -74,7 +74,7 @@ export const MainImg = styled.img`
     @media screen and (min-width:992px) {
         margin-top: 60px;
     }
-`
+`;
 
 export const SectionImg = styled.img`
     width: 100%;
@@ -85,7 +85,7 @@ export const SectionImg = styled.img`
     @media screen and (min-width: 992px) {
         margin: 20px 20px 20px -20px;
     }
-`
+`;
 
 export const Title = styled.h1`
     font-size: 40px;
@@ -110,7 +110,7 @@ export const Title = styled.h1`
         font-size: 65px;
         line-height: 73px;
     }
-`
+`;
 
 export const Subtitle = styled.h2`
     font-size: 18px;
@@ -122,7 +122,7 @@ export const Subtitle = styled.h2`
     @media screen and (min-width:992px) {
         text-align: left;
     }
-`
+`;
 
 export const SectionTitle = styled.h3`
     font-size: 25px;
@@ -134,7 +134,7 @@ export const SectionTitle = styled.h3`
     @media screen and (min-width:768px) {
         font-size: 35px;
     }
-`
+`;
 
 export const SectionSubtitle = styled.p`
     font-size: 16px;
@@ -142,11 +142,11 @@ export const SectionSubtitle = styled.p`
     margin: 50px 0px 10px;
     text-align: ${props => props.align || 'center'};
     text-transform: uppercase;
-`
+`;
 
 export const CheckMark = styled.p`
     margin: 15px 0;
-`
+`;
 
 export const ButtonContainer = styled.div`
     margin: 30px 0;
@@ -155,4 +155,4 @@ export const ButtonContainer = styled.div`
     @media screen and (min-width: 992px) {
         text-align: left;
     }
-`
+`;

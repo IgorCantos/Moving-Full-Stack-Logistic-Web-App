@@ -6,11 +6,12 @@ export const Nav = styled.nav`
     align-items: center;
     justify-content: space-between;
     margin: 10px 0 0;
-`
+`;
 
 export const Header = styled.div`
     background-color: white;
-`
+`;
+
 export const Wrapper = styled.div`
     text-align: center;
     margin-top: 40px;
@@ -20,13 +21,13 @@ export const Wrapper = styled.div`
         align-items: center;
         justify-content: space-between;
     }
-`
+`;
 
 export const Row = styled.tr`
     background-color: white;
     border-radius: 20px;
     margin-bottom: 15px;
-`
+`;
 
 export const Data = styled.td`
     text-align: center;
@@ -46,6 +47,4 @@ export const Data = styled.td`
     @media screen and (min-width: 992px) {
         min-width: auto;
     }
-`
-
-
+`;

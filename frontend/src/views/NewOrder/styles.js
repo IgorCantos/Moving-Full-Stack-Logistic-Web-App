@@ -5,7 +5,8 @@ export const Row = styled.div`
         display: flex;
         width: 100%;
     }
-`
+`;
+
 export const FormWrapper = styled.div`
     height: 650px;
     width: 100%;
@@ -17,4 +18,4 @@ export const FormWrapper = styled.div`
     @media screen and (min-width: 1200px) {
         width: 30%;
     }
-`
+`;

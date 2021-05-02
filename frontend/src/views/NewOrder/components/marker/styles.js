@@ -25,13 +25,13 @@ export const Tooltip = styled.div`
     border-style: solid;
     border-color: #ffffff transparent transparent transparent;
   }
+`;
 
-`
 export const TooltipText = styled.div`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-`
+`;
 
 export const Wrapper = styled.div`
   position: absolute;

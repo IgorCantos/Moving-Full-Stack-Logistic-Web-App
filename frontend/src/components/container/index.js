@@ -3,15 +3,15 @@ import propTypes from 'prop-types';
 import { ContainerBlock } from './styles'
 
 Container.propTypes = {
-    children: propTypes.node
+  children: propTypes.node
 }
 
 function Container(props) {
-    return (
-        <ContainerBlock fluid={props.fluid}>
-            {props.children}
-        </ContainerBlock>
-    )
+  return (
+    <ContainerBlock fluid={props.fluid}>
+      {props.children}
+    </ContainerBlock>
+  )
 }
 
 export default Container;

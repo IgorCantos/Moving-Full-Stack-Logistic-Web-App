@@ -5,4 +5,4 @@ export const ContainerBlock = styled.div`
     max-width: ${props => props.fluid ? '100%' : '1280px' };
     padding: 5px 15px;
     margin: 0 auto;
-`
+`;

@@ -7,4 +7,4 @@ export const FormContainer = styled.form`
     max-width: 500px;
     padding: 20px;
     margin: 10px auto;
-`
+`;

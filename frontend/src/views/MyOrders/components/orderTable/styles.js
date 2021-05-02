@@ -6,7 +6,7 @@ export const TableWrapper = styled.div`
     @media screen and (min-width: 992px) {
         overflow: hidden;
     }
-`
+`;
 
 export const Table = styled.table`
     width: 100%;
@@ -15,4 +15,4 @@ export const Table = styled.table`
     overflow-x: scroll;
     border-collapse: separate;
     border-spacing: 0 16px;
-`
+`;

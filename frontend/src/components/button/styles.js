@@ -19,4 +19,4 @@ export const Button = styled.button`
         transition: 0.3s;
         background-color: #c5780c;
     }
-`
+`;

@@ -10,7 +10,7 @@ export const Modal = styled.div`
     bottom: 0;
     right: 0;
     left: 0;
-`
+`;
 
 export const ModalBody = styled.div`
     background-color: white;
@@ -21,4 +21,4 @@ export const ModalBody = styled.div`
     margin: 10px auto;
     text-align: center;
     min-height: 450px;
-`
+`;

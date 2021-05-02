@@ -11,137 +11,137 @@ import Form from '../../components/form';
 import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props)
 
-        this.state = {
-            email: '',
-            password: '',
-            errors: {
-                email: '',
-                password: ''
-            }
-        }
+    this.state = {
+      email: '',
+      password: '',
+      errors: {
+        email: '',
+        password: ''
+      }
+    }
+  }
+
+  static get propTypes() {
+    return {
+      history: propTypes.any
+    }
+  }
+
+
+  handleOnChange = event => {
+    const { name, value } = event.target;
+    let { errors } = this.state;
+
+    switch (name) {
+      case "email": {
+        const validEmail = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+
+        errors.email = validEmail.test(value) ? '' : 'O e-mail inserido é inválido.';
+        break;
+      }
+
+      case "password": {
+        errors.password = value.length > 1 && value.length <= 5 ? 'A senha deve ter no mínimo 6 caracteres.' : '';
+        break;
+      }
+
+      default:
+        break;
     }
 
-    static get propTypes() {
-        return {
-            history: propTypes.any
-        }
+    this.setState({
+      errors,
+      [name]: value
+    })
+  }
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    const { email, password } = this.state;
+
+    const dataIsValid = (errors) => {
+      let valid = true;
+      Object.values(errors).forEach((value) => value.length > 0 && (valid = false));
+      return valid;
     }
 
-
-    handleOnChange = event => {
-        const { name, value } = event.target;
-        let { errors } = this.state;
-
-        switch (name) {
-            case "email": {
-                const validEmail = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-
-                errors.email = validEmail.test(value) ? '' : 'O e-mail inserido é inválido.';
-                break;
-            }
-
-            case "password": {
-                errors.password = value.length > 1 && value.length <= 5 ? 'A senha deve ter no mínimo 6 caracteres.' : '';
-                break;
-            }
-
-            default:
-                break;
+    if (dataIsValid(this.state.errors)) {
+      axios({
+        method: 'POST',
+        url: 'http://localhost:3000/api/login',
+        withCredentials: true,
+        data: {
+          email,
+          password
         }
-
-        this.setState({
-            errors,
-            [name]: value
+      })
+        .then((response) => {
+          if (response.status == 200) {
+            this.props.history.push('/encomendas')
+          }
         })
+        .catch((error) => {
+          console.log(error.response.data)
+        });
+
+    } else {
+      console.log('erro')
     }
+  }
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        const { email, password } = this.state;
+  render() {
 
-        const dataIsValid = (errors) => {
-            let valid = true;
-            Object.values(errors).forEach((value) => value.length > 0 && (valid = false));
-            return valid;
-        }
+    const { errors } = this.state;
 
-        if (dataIsValid(this.state.errors)) {
-            axios({
-                method: 'POST',
-                url: 'http://localhost:3000/api/login',
-                withCredentials: true,
-                data: {
-                    email,
-                    password
-                }
-            })
-                .then((response) => {
-                    if (response.status == 200) {
-                        this.props.history.push('/encomendas')
-                    }
-                })
-                .catch((error) => {
-                    console.log(error.response.data)
-                });
+    return (
+      <BlueBackground>
+        <Container>
+          <Link to="/">
+            <Logo
+              src={logoMoving}
+              width="120"
+              height="auto"
+              alt="Imagem com um texto escrito Moving."
+              title="Moving. Suas encomendas em ótimas mãos."
+            />
+          </Link>
+        </Container>
 
-        } else {
-            console.log('erro')
-        }
-    }
+        <Container>
+          <Form legend="Login" onSubmit={this.handleFormSubmit}>
 
-    render() {
+            <Input
+              label="E-mail"
+              type="text"
+              required={true}
+              placeholder="Ex: lucas.silva@gmail.com"
+              name="email"
+              value={this.state.email}
+              onChange={(event) => this.handleOnChange(event)}
+            />
+            {errors.email.length > 0 && (<span> {errors.email} </span>)}
 
-        const { errors } = this.state;
+            <Input
+              label="Digite sua senha"
+              type="password"
+              required={true}
+              placeholder="Digite sua senha"
+              name="password"
+              value={this.state.password}
+              onChange={(event) => this.handleOnChange(event)}
+            />
+            {errors.password.length > 0 && (<span> {errors.password} </span>)}
 
-        return (
-            <BlueBackground>
-                <Container>
-                    <Link to="/">
-                        <Logo
-                            src={logoMoving}
-                            width="120"
-                            height="auto"
-                            alt="Imagem com um texto escrito Moving."
-                            title="Moving. Suas encomendas em ótimas mãos."
-                        />
-                    </Link>
-                </Container>
+            <Button fontSize="20px">Entrar</Button>
 
-                <Container>
-                    <Form legend="Login" onSubmit={this.handleFormSubmit}>
-
-                        <Input
-                            label="E-mail"
-                            type="text"
-                            required={true}
-                            placeholder="Ex: lucas.silva@gmail.com"
-                            name="email"
-                            value={this.state.email}
-                            onChange={(event) => this.handleOnChange(event)}
-                        />
-                        {errors.email.length > 0 && (<span> {errors.email} </span>)}
-
-                        <Input
-                            label="Digite sua senha"
-                            type="password"
-                            required={true}
-                            placeholder="Digite sua senha"
-                            name="password"
-                            value={this.state.password}
-                            onChange={(event) => this.handleOnChange(event)}
-                        />
-                        {errors.password.length > 0 && (<span> {errors.password} </span>)}
-
-                        <Button fontSize="20px">Entrar</Button>
-
-                    </Form>
-                </Container>
-            </BlueBackground>
-        )
-    }
+          </Form>
+        </Container>
+      </BlueBackground>
+    )
+  }
 }
 
 export default Login;

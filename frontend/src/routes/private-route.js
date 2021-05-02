@@ -5,47 +5,47 @@ import axios from 'axios';
 
 
 PrivateRoute.propTypes = {
-    component: propTypes.any,
-    isAuth: propTypes.any,
-    location: propTypes.any
+  component: propTypes.any,
+  isAuth: propTypes.any,
+  location: propTypes.any
 }
 
 async function isValidJWT() {
-    let response = await axios.get('http://localhost:3000/api/auth', { withCredentials: true })
-    return response
+  let response = await axios.get('http://localhost:3000/api/auth', { withCredentials: true })
+  return response
 }
 
 function PrivateRoute({ component: Component, ...rest }) {
 
-    const [isAuth, setIsAuth] = useState(null)
-    const [isSendingRequest, setIsSendingRequest] = useState(true)
+  const [isAuth, setIsAuth] = useState(null)
+  const [isSendingRequest, setIsSendingRequest] = useState(true)
 
-    useEffect(() => {
-        (async () => {
-            try {
-                let isAuth = await isValidJWT();
-                setIsAuth(isAuth)
-                setIsSendingRequest(false)
-            }
-            catch (error) {
-                console.log(error)
-                setIsSendingRequest(false)
-            }
-        })();
-    }, []);
+  useEffect(() => {
+    (async () => {
+      try {
+        let isAuth = await isValidJWT();
+        setIsAuth(isAuth)
+        setIsSendingRequest(false)
+      }
+      catch (error) {
+        console.log(error)
+        setIsSendingRequest(false)
+      }
+    })();
+  }, []);
 
-    if (isSendingRequest) {
-        return null
-    }
+  if (isSendingRequest) {
+    return null
+  }
 
-    return (
-        <Route
-            {...rest}
-            render={props =>
-                (isAuth ? <Component {...props} /> : <Redirect to={{ pathname: "/login", state: { from: props.location } }} />)
-            }
-        />
-    )
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        (isAuth ? <Component {...props} /> : <Redirect to={{ pathname: "/login", state: { from: props.location } }} />)
+      }
+    />
+  )
 }
 
 export default PrivateRoute;
